@@ -1,9 +1,9 @@
 import React from 'react';
-import './App.css';
 import { BrowserRouter, Route, Switch } from 'react-router-dom';
 import Header from './components/Header/Header';
 import SideBar from './components/SideBar/SideBar';
 import Main from './components/Main/Main';
+import './App.css';
 
 // import PropTypes from 'prop-types';
 
