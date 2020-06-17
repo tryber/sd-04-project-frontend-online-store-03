@@ -2,6 +2,16 @@
   text-align: center;
 }
 
+*{
+  border: tomato solid 1px;
+}
+
+.row {
+  display: flex;
+  flex-flow: row;
+  justify-content: center;
+}
+
 .App-logo {
   height: 40vmin;
   pointer-events: none;
