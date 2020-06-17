@@ -7,15 +7,17 @@ export default class extends Component {
     this.state = { canRenderList: false };
   }
 
-  async componentDidMount() {
-    const data = await api.getCategories();
-    // console.log(data)
-    const cat = await api.getProductsFromCategoryAndQuery('MLB5672');
-    console.log(cat);
-    this.setState({
-      categories: data,
-      canRenderList: true,
-    });
+  componentDidMount() {
+    const setStateInside = async () => {
+      const data = await api.getCategories();
+      const cat = await api.getProductsFromCategoryAndQuery('MLB5672');
+      this.setState({
+        categories: data,
+        canRenderList: true,
+      });
+      console.log(cat);
+    };
+    setStateInside();
   }
 
   render() {
@@ -24,10 +26,6 @@ export default class extends Component {
       <nav>
         <ul>
           {canRenderList ? categories.map((item) => <li key={item.id}>{item.name}</li>) : null}
-          <li>Categoria1</li>
-          <li>Categoria2</li>
-          <li>Categoria3</li>
-          <li>Categoria4</li>
         </ul>
       </nav>
     );
