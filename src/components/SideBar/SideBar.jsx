@@ -1,18 +1,33 @@
 import React, { Component } from 'react';
-// import  { getCategories } from '../../services/api.js';
+import * as api from '../../services/api';
 
 export default class extends Component {
+  constructor(props) {
+    super(props);
+    this.state = { canRenderList: false };
+  }
+
+  componentDidMount() {
+    const setStateInside = async () => {
+      const data = await api.getCategories();
+      const cat = await api.getProductsFromCategoryAndQuery('MLB5672');
+      this.setState({
+        categories: data,
+        canRenderList: true,
+      });
+      console.log(cat);
+    };
+    setStateInside();
+  }
+
   render() {
-    // getCategories();
+    const { categories, canRenderList } = this.state;
     return (
       <nav>
         <ul>
-          <li>Categoria1</li>
-          <li>Categoria2</li>
-          <li>Categoria3</li>
-          <li>Categoria4</li>
+          {canRenderList ? categories.map((item) => <li key={item.id}>{item.name}</li>) : null}
         </ul>
       </nav>
-    )
+    );
   }
 }
