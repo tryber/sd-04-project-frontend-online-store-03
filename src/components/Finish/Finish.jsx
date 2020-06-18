@@ -4,7 +4,7 @@ export default class extends Component {
   render() {
     return (
       <div className="main">
-        <h1>div main aqui</h1>
+        <h1>Finish</h1>
       </div>
     );
   }

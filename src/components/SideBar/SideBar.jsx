@@ -23,7 +23,7 @@ export default class extends Component {
   render() {
     const { categories, canRenderList } = this.state;
     return (
-      <nav>
+      <nav className="nav">
         <ul>
           {canRenderList ? categories.map((item) => <li key={item.id}>{item.name}</li>) : null}
         </ul>
