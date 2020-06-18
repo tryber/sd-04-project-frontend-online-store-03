@@ -1,10 +1,6 @@
 import React, { Component } from 'react';
 
 export default class extends Component {
-  constructor(props) {
-    super(props);
-  }
-
   render() {
     console.log(this.props);
     // console.log(this.props);
@@ -17,6 +13,6 @@ export default class extends Component {
     //     </div>
     //   );
     // }
-    return <div>Vazio</div>
+    return <div>Vazio</div>;
   }
 }

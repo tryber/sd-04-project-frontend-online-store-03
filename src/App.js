@@ -14,9 +14,7 @@ import './App.css';
 class App extends Component {
   constructor(props) {
     super(props);
-    this.state = {
-      filteredProducts: [],
-    };
+    this.state = { filteredProducts: [] };
     this.setfilteredProducts = this.setfilteredProducts.bind(this);
   }
 
@@ -25,6 +23,7 @@ class App extends Component {
   }
 
   render() {
+    const { filteredProducts } = this.state;
     return (
       <BrowserRouter>
         <Header />
@@ -34,7 +33,7 @@ class App extends Component {
             <Route
               exact
               path="/"
-              render={() => <Main filteredProducts={this.state.filteredProducts} />}
+              render={() => <Main filteredProducts={filteredProducts} />}
             />
             <Route exact path="/cart" component={Cart} />
             <Route exact path="/cart/finish" component={Finish} />

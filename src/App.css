@@ -12,6 +12,11 @@
   justify-content: center;
 }
 
+.nav {
+  display: flex;
+  flex-flow: column;
+}
+
 .App-logo {
   height: 40vmin;
   pointer-events: none;
