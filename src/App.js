@@ -40,7 +40,10 @@ class App extends Component {
     const { filteredProducts, couldSet, textToSearch, categoryId } = this.state;
     return (
       <BrowserRouter>
-        <Header setTextToSearch={this.setTextToSearch} categoryId={categoryId} setfilteredProducts={this.setfilteredProducts} />
+        <Header
+          setTextToSearch={this.setTextToSearch} categoryId={categoryId}
+          setfilteredProducts={this.setfilteredProducts}
+        />
         <div className="row">
           <SideBar
             setfilteredProducts={this.setfilteredProducts}
