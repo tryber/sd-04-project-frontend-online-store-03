@@ -53,7 +53,10 @@ class App extends Component {
             <Route
               exact
               path="/"
-              render={() => <Main filteredProducts={filteredProducts} couldSet={couldSet} categoryId={categoryId} />}
+              render={() => <Main
+                filteredProducts={filteredProducts}
+                couldSet={couldSet} categoryId={categoryId}
+              />}
             />
             <Route exact path="/cart" component={Cart} />
             <Route exact path="/cart/finish" component={Finish} />
