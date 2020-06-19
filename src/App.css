@@ -17,6 +17,12 @@
   flex-flow: column;
 }
 
+.header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
 .App-logo {
   height: 40vmin;
   pointer-events: none;
