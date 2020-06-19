@@ -1,12 +1,12 @@
 import React, { Component } from 'react';
 
 export default class extends Component {
-  componentDidMount(){
-    const {id} = this.props.match.params; 
+  componentDidMount() {
+    const { id } = this.props.match.params;
     fetch(`https://api.mercadolibre.com/items/${id}`)
-    .then(data => data.json())
-    .then(data => this.setState({ data }))
-    .catch()
+    .then((data) => data.json())
+    .then((data) => this.setState({ data }))
+    .catch();
   }
   render() {
     return (
