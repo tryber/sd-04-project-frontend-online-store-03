@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+// import { ShoppingCart } from '@material-ui/icons/';
 
 export default class extends Component {
   render() {
@@ -6,6 +7,6 @@ export default class extends Component {
       <header>
         <h1>Header aqui</h1>
       </header>
-    )
+    );
   }
 }

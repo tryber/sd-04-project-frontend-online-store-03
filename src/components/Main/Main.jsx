@@ -2,17 +2,20 @@ import React, { Component } from 'react';
 
 export default class extends Component {
   render() {
-    console.log(this.props);
-    // console.log(this.props);
-    // if (this.state.products) {
-    //   return (
-    //     <div className="main">
-    //       {this.state.products.map((item) => (
-    //         <h1 key={item.id}>{item.name}</h1>
-    //       ))}
-    //     </div>
-    //   );
-    // }
-    return <div>Vazio</div>;
+    const { filteredProducts, couldSet } = this.props;
+
+    if (!couldSet) {
+      return (
+        <div data-testid="home-initial-message">Digite algum termo de pesquisa ou escolha uma categoria.</div>
+      );
+    }
+
+    return (
+      <div className="main">
+        {filteredProducts.map((item) => (
+          <p key={item.id}>{item.title}</p>
+        ))}
+      </div>
+    );
   }
 }

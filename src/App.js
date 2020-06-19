@@ -14,16 +14,19 @@ import './App.css';
 class App extends Component {
   constructor(props) {
     super(props);
-    this.state = { filteredProducts: [] };
+    this.state = {
+      filteredProducts: [],
+      couldSet: false,
+    };
     this.setfilteredProducts = this.setfilteredProducts.bind(this);
   }
 
   setfilteredProducts(arrayOfProducts) {
-    this.setState({ filteredProducts: arrayOfProducts });
+    this.setState({ filteredProducts: arrayOfProducts, couldSet: true });
   }
 
   render() {
-    const { filteredProducts } = this.state;
+    const { filteredProducts, couldSet } = this.state;
     return (
       <BrowserRouter>
         <Header />
@@ -33,11 +36,15 @@ class App extends Component {
             <Route
               exact
               path="/"
-              render={() => <Main filteredProducts={filteredProducts} />}
+              render={() => <Main filteredProducts={filteredProducts} couldSet={couldSet} />}
             />
             <Route exact path="/cart" component={Cart} />
             <Route exact path="/cart/finish" component={Finish} />
-            <Route exact path="/products/:id" component={ProductDetail} />
+            <Route
+              exact
+              path="/products/:id/:title"
+              render={(props) => <ProductDetail {...props} />}
+            />
             <Route path="/" component={NotFound} />
           </Switch>
         </div>
