@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import ProductCard from '../ProductCard/ProductCard';
 
 export default class extends Component {
   render() {
@@ -15,7 +16,7 @@ export default class extends Component {
     return (
       <div className="main">
         {filteredProducts.map((item) => (
-          <p key={item.id}>{item.title}</p>
+          <ProductCard key={item.id} data={item} />
         ))}
       </div>
     );
