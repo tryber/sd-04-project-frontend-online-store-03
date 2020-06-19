@@ -32,7 +32,13 @@ export default class extends Component {
       <nav className="nav">
         {canRenderList
           ? categories.map((item) => (
-            <Link to="/" key={item.id} id={item.id} onClick={(e) => this.setResults(e.target.id)}>
+            <Link
+              data-testid="category"
+              to="/"
+              key={item.id}
+              id={item.id}
+              onClick={(e) => this.setResults(e.target.id)}
+            >
               {item.name}
             </Link>
           ))

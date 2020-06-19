@@ -3,10 +3,6 @@
   margin: auto;
 }
 
-*{
-  border: tomato solid 1px;
-}
-
 .row {
   display: flex;
   flex-flow: row;
@@ -15,8 +11,8 @@
 .nav {
   display: flex;
   flex-flow: column;
-  margin: 0 auto;
-  width: 20%;
+  margin: 0;
+  max-width: 20%;
 }
 
 .header {
@@ -25,18 +21,29 @@
   color: white;
   display: flex;
   justify-content: space-between;
-  margin: 0 auto;
+  margin: 0;
   padding: 0 2%;
 }
 
 .main {
-  margin: 0 auto;
-  width: 80%;
+  margin: 0;
+  display: flex;
+  flex-wrap: wrap;
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
+.ProductCard {
+  align-content: center;
+  align-items: center;
+  border: 1px black solid;
+  border-radius: 5px;
+  display: flex;
+  flex-direction: column;
+  margin: 4px auto;
+  width: 20%;
+}
+
+.ProductCard img {
+  width: 50%;
 }
 
 @media (prefers-reduced-motion: no-preference) {

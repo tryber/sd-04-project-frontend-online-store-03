@@ -1,6 +1,6 @@
 export async function getCategories() {
   const data = fetch(
-    'https://cors-anywhere.herokuapp.com/https://api.mercadolibre.com/sites/MLB/categories',
+    'https://api.mercadolibre.com/sites/MLB/categories',
   ).then((file) => file.json());
   return data;
 }
