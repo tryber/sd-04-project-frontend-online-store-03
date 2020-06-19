@@ -30,11 +30,14 @@ export default class extends Component {
         <h1>FancyPants Store</h1>
         <form>
           <input
-            type="text" data-testid="query-input" value={inputValue}
+            type="text"
+            data-testid="query-input"
+            value={inputValue}
             onChange={(e) => this.setInputValue(e)}
           />
           <button
-            type="button" data-testid="query-button"
+            type="button"
+            data-testid="query-button"
             onClick={() => {
               setTextToSearch(inputValue);
               this.setResults();
@@ -45,7 +48,8 @@ export default class extends Component {
         </form>
         <Link to="/cart">
           <ShoppingCart
-            data-testid="shopping-cart-button" fontSize="large"
+            data-testid="shopping-cart-button"
+            fontSize="large"
             style={{ color: 'white' }}
           />
         </Link>
