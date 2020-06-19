@@ -21,6 +21,7 @@ class App extends Component {
     };
     this.setfilteredProducts = this.setfilteredProducts.bind(this);
     this.setTextToSearch = this.setTextToSearch.bind(this);
+    this.setCategoryId = this.setCategoryId.bind(this);
   }
 
   setfilteredProducts(arrayOfProducts) {
@@ -31,18 +32,28 @@ class App extends Component {
     this.setState({ textToSearch: text });
   }
 
+  setCategoryId(id) {
+    this.setState({ categoryId: id });
+  }
+
   render() {
-    const { filteredProducts, couldSet, textToSearch } = this.state;
+    const { filteredProducts, couldSet, textToSearch, categoryId } = this.state;
     return (
       <BrowserRouter>
-        <Header setTextToSearch={this.setTextToSearch} />
+        <Header
+          setTextToSearch={this.setTextToSearch} categoryId={categoryId}
+          setfilteredProducts={this.setfilteredProducts}
+        />
         <div className="row">
-          <SideBar setfilteredProducts={this.setfilteredProducts} textToSearch={textToSearch} />
+          <SideBar
+            setfilteredProducts={this.setfilteredProducts}
+            textToSearch={textToSearch} setCategoryId={this.setCategoryId}
+          />
           <Switch className="main">
             <Route
-              exact
-              path="/"
-              render={() => <Main filteredProducts={filteredProducts} couldSet={couldSet} />}
+              exact path="/" render={() => <Main
+                filteredProducts={filteredProducts} couldSet={couldSet} categoryId={categoryId}
+              />}
             />
             <Route exact path="/cart" component={Cart} />
             <Route exact path="/cart/finish" component={Finish} />
