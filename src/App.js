@@ -51,11 +51,8 @@ class App extends Component {
           />
           <Switch className="main">
             <Route
-              exact
-              path="/"
-              render={() => <Main
-                filteredProducts={filteredProducts}
-                couldSet={couldSet} categoryId={categoryId}
+              exact path="/" render={() => <Main
+                filteredProducts={filteredProducts} couldSet={couldSet} categoryId={categoryId}
               />}
             />
             <Route exact path="/cart" component={Cart} />
