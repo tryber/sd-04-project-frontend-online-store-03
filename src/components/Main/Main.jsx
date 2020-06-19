@@ -6,7 +6,9 @@ export default class extends Component {
 
     if (!couldSet) {
       return (
-        <div data-testid="home-initial-message">Digite algum termo de pesquisa ou escolha uma categoria.</div>
+        <div data-testid="home-initial-message">
+          Digite algum termo de pesquisa ou escolha uma categoria.
+        </div>
       );
     }
 
