@@ -22,11 +22,12 @@
 
 .header {
   align-items: center;
+  background-color:navy;
+  color: white;
   display: flex;
   justify-content: space-between;
   margin: 0 auto;
-  background-color:navy;
-  color: white
+  padding: 0 2%;
 }
 
 .main {

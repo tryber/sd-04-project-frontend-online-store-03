@@ -8,7 +8,7 @@ export default class extends Component {
       <header className="header">
         <h1>Header aqui</h1>
         <Link to="/cart">
-          <ShoppingCart style={{ color: "white" }}/>
+          <ShoppingCart fontSize="large" style={{ color: "white" }}/>
         </Link>
       </header>
     );
