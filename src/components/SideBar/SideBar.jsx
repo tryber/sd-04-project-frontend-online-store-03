@@ -21,11 +21,12 @@ export default class extends Component {
   }
 
   async setResults(id) {
-    const { setfilteredProducts, textToSearch } = this.props;
+    const { setfilteredProducts, textToSearch, setCategoryId } = this.props;
     const products = textToSearch
       ? await api.getProductsFromCategoryAndQuery(id, textToSearch)
       : await api.getProductsFromCategoryAndQuery(id);
     setfilteredProducts(products.results);
+    setCategoryId(id);
   }
 
   render() {

@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
 import ShoppingCart from '@material-ui/icons/ShoppingCart';
+import * as api from '../../services/api';
 
 export default class extends Component {
   constructor(props) {
@@ -9,7 +10,15 @@ export default class extends Component {
   }
 
   setInputValue(e) {
+    e.preventDefault();
     this.setState({ inputValue: e.target.value });
+  }
+
+  async setResults() {
+    const { setfilteredProducts, textToSearch, categoryId } = this.props;
+    const products = await api.getProductsFromCategoryAndQuery(categoryId, textToSearch);
+
+    setfilteredProducts(products.results);
   }
 
   render() {
@@ -29,7 +38,10 @@ export default class extends Component {
           <button
             type="button"
             data-testid="query-button"
-            onClick={() => setTextToSearch(inputValue)}
+            onClick={() => {
+              setTextToSearch(inputValue);
+              this.setResults();
+            }}
           >
             Buscar
           </button>

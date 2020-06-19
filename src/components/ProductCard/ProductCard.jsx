@@ -4,14 +4,14 @@ import { Link } from 'react-router-dom';
 
 export default class extends Component {
   render() {
-    const { data } = this.props;
+    const { data, categoryId } = this.props;
     const { title, price, thumbnail, id } = data;
     return (
       <div className="ProductCard" data-testid="product">
         <h3>{title}</h3>
         <img src={thumbnail} alt={title} />
         <p>{price}</p>
-        <Link to={`/products/${id}/${title}`} data={data}>Detalhes</Link>
+        <Link to={`/products/${categoryId}/${id}`} data={data}>Detalhes</Link>
       </div>
     );
   }
