@@ -17,21 +17,27 @@ class App extends Component {
     this.state = {
       filteredProducts: [],
       couldSet: false,
+      textToSearch: '',
     };
     this.setfilteredProducts = this.setfilteredProducts.bind(this);
+    this.setTextToSearch = this.setTextToSearch.bind(this);
   }
 
   setfilteredProducts(arrayOfProducts) {
     this.setState({ filteredProducts: arrayOfProducts, couldSet: true });
   }
 
+  setTextToSearch(text) {
+    this.setState({ textToSearch: text });
+  }
+
   render() {
-    const { filteredProducts, couldSet } = this.state;
+    const { filteredProducts, couldSet, textToSearch } = this.state;
     return (
       <BrowserRouter>
-        <Header />
+        <Header setTextToSearch={this.setTextToSearch} />
         <div className="row">
-          <SideBar setfilteredProducts={this.setfilteredProducts} />
+          <SideBar setfilteredProducts={this.setfilteredProducts} textToSearch={textToSearch} />
           <Switch className="main">
             <Route
               exact
