@@ -10,7 +10,6 @@
 .row {
   display: flex;
   flex-flow: row;
-  justify-content: left;
 }
 
 .nav {
@@ -22,7 +21,7 @@
 
 .header {
   align-items: center;
-  background-color:navy;
+  background-color: navy;
   color: white;
   display: flex;
   justify-content: space-between;
