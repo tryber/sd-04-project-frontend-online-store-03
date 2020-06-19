@@ -1,5 +1,6 @@
 .App {
   text-align: center;
+  margin: auto;
 }
 
 *{
@@ -9,7 +10,28 @@
 .row {
   display: flex;
   flex-flow: row;
-  justify-content: center;
+}
+
+.nav {
+  display: flex;
+  flex-flow: column;
+  margin: 0 auto;
+  width: 20%;
+}
+
+.header {
+  align-items: center;
+  background-color: navy;
+  color: white;
+  display: flex;
+  justify-content: space-between;
+  margin: 0 auto;
+  padding: 0 2%;
+}
+
+.main {
+  margin: 0 auto;
+  width: 80%;
 }
 
 .App-logo {
