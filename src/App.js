@@ -32,7 +32,7 @@ class App extends Component {
         <Header />
         <div className="row">
           <SideBar setfilteredProducts={this.setfilteredProducts} />
-          <Switch>
+          <Switch className="main">
             <Route
               exact
               path="/"
