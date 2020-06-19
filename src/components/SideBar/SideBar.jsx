@@ -45,7 +45,7 @@ export default class extends Component {
               {item.name}
             </Link>
           ))
-          : null}
+          : <div>loading...</div>}
       </nav>
     );
   }
