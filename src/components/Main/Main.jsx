@@ -16,7 +16,11 @@ export default class extends Component {
     return (
       <div className="main">
         {filteredProducts.map((item) => (
-          <ProductCard key={item.id} data={item} categoryId={categoryId} />
+          <ProductCard
+            key={item.id}
+            data={item}
+            categoryId={categoryId}
+          />
         ))}
       </div>
     );

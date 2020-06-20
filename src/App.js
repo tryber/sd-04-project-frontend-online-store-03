@@ -18,6 +18,7 @@ class App extends Component {
       filteredProducts: [],
       couldSet: false,
       textToSearch: '',
+      cartItemsTotal: 50,
     };
     this.setfilteredProducts = this.setfilteredProducts.bind(this);
     this.setTextToSearch = this.setTextToSearch.bind(this);
@@ -37,13 +38,21 @@ class App extends Component {
   }
 
   render() {
-    const { filteredProducts, couldSet, textToSearch, categoryId } = this.state;
+    const {
+      filteredProducts,
+      couldSet,
+      textToSearch,
+      categoryId,
+      cartItemsTotal,
+      setCartItems,
+    } = this.state;
     return (
       <BrowserRouter>
         <Header
           setTextToSearch={this.setTextToSearch}
           categoryId={categoryId}
           setfilteredProducts={this.setfilteredProducts}
+          cartItemsTotal={cartItemsTotal}
         />
         <div className="row">
           <SideBar

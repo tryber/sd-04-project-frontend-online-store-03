@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
+import AddToCart from '../AddToCart/AddToCart';
 // import * as api from '../../services/api';
 
 export default class extends Component {
@@ -11,7 +12,10 @@ export default class extends Component {
         <h3>{title}</h3>
         <img src={thumbnail} alt={title} />
         <p>{price}</p>
-        <Link to={`/products/${id}`}>Detalhes</Link>
+        <Link to={`/products/${id}`} data-testid="product-detail-link">
+          Detalhes
+        </Link>
+        <AddToCart data={data} id={id} />
       </div>
     );
   }
