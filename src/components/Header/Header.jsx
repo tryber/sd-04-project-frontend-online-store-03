@@ -28,7 +28,6 @@ export default class extends Component {
   render() {
     const { inputValue } = this.state;
     const { setTextToSearch } = this.props;
-
     return (
       <header className="header">
         <h1>FancyPants Store</h1>
@@ -42,11 +41,8 @@ export default class extends Component {
           <button
             type="button"
             data-testid="query-button"
-            onClick={() => {
-              setTextToSearch(inputValue);
-              this.setResults(inputValue);
-            }}
-          >
+            onClick={() => { setTextToSearch(inputValue);
+              this.setResults(inputValue);}}>
             Buscar
           </button>
         </form>

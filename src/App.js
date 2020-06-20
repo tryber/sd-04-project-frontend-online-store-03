@@ -53,12 +53,11 @@ class App extends Component {
           />
           <Switch className="main">
             <Route
-              exact path="/"
-              render={() => (<Main
+              exact path="/" render={() => (<Main
                 filteredProducts={filteredProducts}
                 couldSet={couldSet}
-                categoryId={categoryId} />
-              )}
+                categoryId={categoryId} 
+              />)}
             />
             <Route exact path="/cart" component={Cart} />
             <Route exact path="/cart/finish" component={Finish} />
