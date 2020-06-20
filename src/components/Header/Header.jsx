@@ -1,7 +1,6 @@
 import React, { Component } from 'react';
-import { Link } from 'react-router-dom';
-import ShoppingCart from '@material-ui/icons/ShoppingCart';
 import * as api from '../../services/api';
+import CartIcon from '../CartIcon/CartIcon';
 
 export default class extends Component {
   constructor(props) {
@@ -27,7 +26,7 @@ export default class extends Component {
 
   render() {
     const { inputValue } = this.state;
-    const { setTextToSearch, cartItemsTotal } = this.props;
+    const { setTextToSearch } = this.props;
     return (
       <header className="header">
         <h1>FancyPants Store</h1>
@@ -49,14 +48,7 @@ export default class extends Component {
             Buscar
           </button>
         </form>
-        <Link to="/cart" className="flex">
-          <ShoppingCart
-            data-testid="shopping-cart-button"
-            fontSize="large"
-            style={{ color: 'white' }}
-          />
-          <div data-testid="shopping-cart-product-quantity">{cartItemsTotal}</div>
-        </Link>
+        <CartIcon />
       </header>
     );
   }
