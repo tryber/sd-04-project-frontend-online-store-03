@@ -11,7 +11,7 @@ export default class extends Component {
         <h3>{title}</h3>
         <img src={thumbnail} alt={title} />
         <p>{price}</p>
-        <Link to={`/products/${id}`}>Detalhes</Link>
+        <Link to={`/products/${id}`} data-testid="product-detail-link">Detalhes</Link>
       </div>
     );
   }
