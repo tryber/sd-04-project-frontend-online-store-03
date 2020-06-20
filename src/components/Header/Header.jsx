@@ -14,11 +14,15 @@ export default class extends Component {
     this.setState({ inputValue: e.target.value });
   }
 
-  async setResults() {
-    const { setfilteredProducts, textToSearch, categoryId } = this.props;
-    const products = await api.getProductsFromCategoryAndQuery(categoryId, textToSearch);
+  async setResults(inputValue) {
+    const { setfilteredProducts, categoryId, setTextToSearch } = this.props;
+    const products = categoryId
+      ? await api.getProductsFromCategoryAndQuery(categoryId, inputValue)
+      : await api.getProductsFromCategoryAndQuery(undefined, inputValue);
 
     setfilteredProducts(products.results);
+    this.setState({ inputValue: '' });
+    setTextToSearch(this.state.inputValue);
   }
 
   render() {
@@ -30,22 +34,24 @@ export default class extends Component {
         <h1>FancyPants Store</h1>
         <form>
           <input
-            type="text" data-testid="query-input"
+            type="text"
+            data-testid="query-input"
             value={inputValue}
             onChange={(e) => this.setInputValue(e)}
           />
           <button
-            type="button" data-testid="query-button"
+            type="button"
+            data-testid="query-button"
             onClick={() => {
               setTextToSearch(inputValue);
-              this.setResults();
+              this.setResults(inputValue);
             }}
           >
             Buscar
           </button>
         </form>
         <Link to="/cart">
-          <ShoppingCart 
+          <ShoppingCart
             data-testid="shopping-cart-button"
             fontSize="large"
             style={{ color: 'white' }}
