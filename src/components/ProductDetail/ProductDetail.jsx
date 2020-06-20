@@ -3,7 +3,7 @@ import React, { Component } from 'react';
 export default class extends Component {
   constructor(props) {
     super(props);
-    this.state = { data: {}, };
+    this.state = { data: {} };
   }
   componentDidMount() {
     const { match } = this.props;
