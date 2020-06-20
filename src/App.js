@@ -41,27 +41,31 @@ class App extends Component {
     return (
       <BrowserRouter>
         <Header
-          setTextToSearch={this.setTextToSearch} categoryId={categoryId}
+          setTextToSearch={this.setTextToSearch}
+          categoryId={categoryId}
           setfilteredProducts={this.setfilteredProducts}
         />
         <div className="row">
           <SideBar
             setfilteredProducts={this.setfilteredProducts}
-            textToSearch={textToSearch} setCategoryId={this.setCategoryId}
+            textToSearch={textToSearch}
+            setCategoryId={this.setCategoryId}
           />
           <Switch className="main">
             <Route
-              exact path="/" render={() => <Main
-                filteredProducts={filteredProducts} couldSet={couldSet} categoryId={categoryId}
-              />}
+              exact
+              path="/"
+              render={() => (
+                <Main
+                  filteredProducts={filteredProducts}
+                  couldSet={couldSet}
+                  categoryId={categoryId}
+                />
+              )}
             />
             <Route exact path="/cart" component={Cart} />
             <Route exact path="/cart/finish" component={Finish} />
-            <Route
-              exact
-              path="/products/:id/:title"
-              render={(props) => <ProductDetail {...props} />}
-            />
+            <Route exact path="/products/:id" render={() => <ProductDetail />} />
             <Route path="/" component={NotFound} />
           </Switch>
         </div>
