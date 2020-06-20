@@ -22,7 +22,7 @@ export default class extends Component {
 
     setfilteredProducts(products.results);
     this.setState({ inputValue: '' });
-    setTextToSearch(this.state.inputValue);
+    setTextToSearch(inputValue);
   }
 
   render() {
@@ -41,8 +41,11 @@ export default class extends Component {
           <button
             type="button"
             data-testid="query-button"
-            onClick={() => { setTextToSearch(inputValue);
-              this.setResults(inputValue);}}>
+            onClick={() => {
+              setTextToSearch(inputValue);
+              this.setResults(inputValue);
+            }}
+          >
             Buscar
           </button>
         </form>
