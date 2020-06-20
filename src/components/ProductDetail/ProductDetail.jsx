@@ -1,30 +1,39 @@
 import React, { Component } from 'react';
+import AddToCart from '../AddToCart/AddToCart';
 
 export default class extends Component {
   constructor(props) {
     super(props);
-    this.state = { data: {} };
+    this.state = {
+      couldRender: false,
+    };
   }
+
   componentDidMount() {
     const { match } = this.props;
     const { id } = match.params;
     fetch(`https://api.mercadolibre.com/items/${id}`)
       .then((data) => data.json())
       .then((data) => {
-        this.setState({ ...data });
+        this.setState({ data: data, couldRender: true });
       })
       .catch();
-      // console.log(id);
   }
 
   render() {
-    const { thumbnail, title, price } = this.state;
-    // if (this.state) console.log(this.state)
+    if (!this.state.couldRender) return <div>Loading...</div>;
+
+    const { data } = this.state;
+    const { thumbnail, title, price } = data;
+    const { match, addToCart } = this.props;
+    const { id } = match.params;
+
     return (
       <div className="main">
         <h1 data-testid="product-detail-name">{title}</h1>
         <img width="150px" height="200px" alt="" src={thumbnail} />
         <span>{price}</span>
+        <AddToCart data={data} id={id} addToCart={addToCart} />
       </div>
     );
   }
