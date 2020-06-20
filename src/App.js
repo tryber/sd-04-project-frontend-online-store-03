@@ -44,7 +44,6 @@ class App extends Component {
       textToSearch,
       categoryId,
       cartItemsTotal,
-      setCartItems,
     } = this.state;
     return (
       <BrowserRouter>
