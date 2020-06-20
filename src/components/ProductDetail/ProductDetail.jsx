@@ -3,9 +3,7 @@ import React, { Component } from 'react';
 export default class extends Component {
   constructor(props) {
     super(props);
-    this.state = {
-      data: {},
-    }
+    this.state = { data: {}, };
   }
   componentDidMount() {
     const { match } = this.props;
@@ -20,12 +18,12 @@ export default class extends Component {
   }
 
   render() {
-    const {thumbnail, title, price} = this.state;
+    const { thumbnail, title, price } = this.state;
     // if (this.state) console.log(this.state)
     return (
       <div className="main">
         <h1 data-testid="product-detail-name">{title}</h1>
-        <img width="150px" height="200px" alt='' src={thumbnail}></img>
+        <img width="150px" height="200px" alt="" src={thumbnail} />
         <span>{price}</span>
       </div>
     );
