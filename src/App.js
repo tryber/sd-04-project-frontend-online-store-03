@@ -65,7 +65,7 @@ class App extends Component {
             />
             <Route exact path="/cart" component={Cart} />
             <Route exact path="/cart/finish" component={Finish} />
-            <Route exact path="/products/:id" render={() => <ProductDetail />} />
+            <Route exact path="/products/:id" render={(props) => <ProductDetail {...props} />} />
             <Route path="/" component={NotFound} />
           </Switch>
         </div>
