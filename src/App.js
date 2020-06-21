@@ -32,7 +32,10 @@ class App extends Component {
 
   componentDidMount() {
     const localCartItem = JSON.parse(localStorage.getItem('cartItems'));
-    return (localCartItem) ? this.setState({cartItems: localCartItem}) : null;
+    const localStorageToState = (state) => {
+      if (state) this.setState({ cartItems: state });
+    };
+    return localStorageToState(localCartItem);
   }
 
   componentDidUpdate() {

@@ -26,7 +26,7 @@ export default class extends Component {
             style={{ color: 'black' }}
           />
           Total:
-          <div data-testid="shopping-cart-size">
+          <div id="shopping-cart-total" data-testid="shopping-cart-size">
             {cartItems.reduce((acc, { quantity }) => acc + quantity, 0)}
           </div>
           <Link to="/checkout">
