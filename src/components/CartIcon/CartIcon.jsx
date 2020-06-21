@@ -7,7 +7,6 @@ export default class extends Component {
     return (
       <Link to="/cart" className="flex">
         <ShoppingCart
-          data-testid="shopping-cart-button"
           fontSize="large"
           style={{ color: 'white' }}
         />

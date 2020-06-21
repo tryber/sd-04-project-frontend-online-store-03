@@ -43,7 +43,6 @@ export default class extends Component {
         <span>{price}</span>
         <AddToCart testid="product-detail-add-to-cart" data={data} id={id} addToCart={addToCart} />
         <ShoppingCart
-          data-testid="shopping-cart-button"
           fontSize="large"
           style={{ color: 'black' }}
         />
