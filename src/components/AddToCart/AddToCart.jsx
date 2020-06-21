@@ -3,13 +3,15 @@ import AddBoxIcon from '@material-ui/icons/AddBox';
 
 export default class extends Component {
   render() {
-    const { addToCart, data, id } = this.props;
-    const item = {
-      ...data,
-    };
+    const { addToCart, data } = this.props;
+    const item = { ...data };
 
     return (
-      <button type="button" onClick={() => addToCart(item)}>
+      <button
+        data-testid="product-detail-add-to-cart product-add-to-cart"
+        type="button"
+        onClick={() => addToCart(item)}
+      >
         <AddBoxIcon />
         Add to cart
       </button>

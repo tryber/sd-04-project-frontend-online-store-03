@@ -10,6 +10,9 @@ import NotFound from './components/NotFound/NotFound';
 import './App.css';
 
 // import PropTypes from 'prop-types';
+function arrayUpdateAt(array, index, item) {
+  return [...array.slice(0, index), item, ...array.slice(index + 1)];
+}
 
 class App extends Component {
   constructor(props) {
@@ -19,6 +22,7 @@ class App extends Component {
       couldSet: false,
       textToSearch: '',
       cartItems: [],
+      totalCartItems: 0,
     };
     this.setfilteredProducts = this.setfilteredProducts.bind(this);
     this.setTextToSearch = this.setTextToSearch.bind(this);
@@ -39,35 +43,43 @@ class App extends Component {
     this.setState({ categoryId: id });
   }
 
-  addToCart(product) {
-    const index = this.state.cartItems.findIndex((item) => item.id === product.id);
-    const exists = index >= 0;
-    if (!exists) {
-      this.setState({ cartItems: [...this.state.cartItems, { ...product, quantity: 1 }] });
-    } else {
+  setTotalCartItems() {
+    const { cartItems } = this.state;
+    const total = cartItems.reduce((acc, { quantity }) => acc + quantity, 0);
+    this.setState({ totalCartItems: total });
+  }
+
+  changeQuantity(signal, product) {
+    const { cartItems } = this.state;
+    const index = cartItems.findIndex((item) => item.id === product.id);
+    if (signal === '+') {
       this.setState({
-        cartItems: arrayUpdateAt(this.state.cartItems, index, {
-          ...this.state.cartItems[index],
-          quantity: this.state.cartItems[index].quantity + 1,
+        cartItems: arrayUpdateAt(cartItems, index, {
+          ...cartItems[index],
+          quantity: cartItems[index].quantity + 1,
+        }),
+      });
+    } else if (signal === '-') {
+      this.setState({
+        cartItems: arrayUpdateAt(cartItems, index, {
+          ...cartItems[index],
+          quantity: cartItems[index].quantity - 1,
         }),
       });
     }
   }
 
-  changeQuantity(signal, product) {
-    const index = this.state.cartItems.findIndex((item) => item.id === product.id);
-    if (signal === '+') {
+  addToCart(product) {
+    const { cartItems } = this.state;
+    const index = cartItems.findIndex((item) => item.id === product.id);
+    const exists = index >= 0;
+    if (!exists) {
+      this.setState({ cartItems: [...cartItems, { ...product, quantity: 1 }] });
+    } else {
       this.setState({
-        cartItems: arrayUpdateAt(this.state.cartItems, index, {
-          ...this.state.cartItems[index],
-          quantity: this.state.cartItems[index].quantity + 1,
-        }),
-      });
-    } else if (signal === '-') {
-      this.setState({
-        cartItems: arrayUpdateAt(this.state.cartItems, index, {
-          ...this.state.cartItems[index],
-          quantity: this.state.cartItems[index].quantity - 1,
+        cartItems: arrayUpdateAt(cartItems, index, {
+          ...cartItems[index],
+          quantity: cartItems[index].quantity + 1,
         }),
       });
     }
@@ -79,8 +91,8 @@ class App extends Component {
       couldSet,
       textToSearch,
       categoryId,
-      cartItemsTotal,
       cartItems,
+      totalCartItems,
     } = this.state;
     return (
       <BrowserRouter>
@@ -88,7 +100,7 @@ class App extends Component {
           setTextToSearch={this.setTextToSearch}
           categoryId={categoryId}
           setfilteredProducts={this.setfilteredProducts}
-          cartItemsTotal={cartItemsTotal}
+          totalCartItems={totalCartItems}
         />
         <div className="row">
           <SideBar
@@ -113,7 +125,12 @@ class App extends Component {
               exact
               path="/cart"
               render={(props) => (
-                <Cart {...props} cartItems={cartItems} changeQuantity={this.changeQuantity} />
+                <Cart
+                  {...props}
+                  cartItems={cartItems}
+                  changeQuantity={this.changeQuantity}
+                  totalCartItems={totalCartItems}
+                />
               )}
             />
             <Route exact path="/cart/finish" component={Finish} />
@@ -128,10 +145,6 @@ class App extends Component {
       </BrowserRouter>
     );
   }
-}
-
-function arrayUpdateAt(array, index, item) {
-  return [...array.slice(0, index), item, ...array.slice(index + 1)];
 }
 
 export default App;

@@ -27,7 +27,7 @@ export default class extends Component {
 
   render() {
     const { inputValue } = this.state;
-    const { setTextToSearch, cartItemsTotal } = this.props;
+    const { setTextToSearch, totalCartItems } = this.props;
     return (
       <header className="header">
         <h1>FancyPants Store</h1>
@@ -55,7 +55,7 @@ export default class extends Component {
             fontSize="large"
             style={{ color: 'white' }}
           />
-          <div data-testid="shopping-cart-product-quantity">{cartItemsTotal}</div>
+          <div data-testid="shopping-cart-product-quantity">{totalCartItems}</div>
         </Link>
       </header>
     );

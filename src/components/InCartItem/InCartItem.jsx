@@ -3,7 +3,7 @@ import React, { Component } from 'react';
 export default class extends Component {
   render() {
     const { changeQuantity, item } = this.props;
-    const { id, price, title, quantity } = this.props.item;
+    const { price, title, quantity } = item;
     return (
       <div>
         <p data-testid="shopping-cart-product-name">{title}</p>

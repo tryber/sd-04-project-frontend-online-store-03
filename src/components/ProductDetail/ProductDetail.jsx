@@ -4,9 +4,7 @@ import AddToCart from '../AddToCart/AddToCart';
 export default class extends Component {
   constructor(props) {
     super(props);
-    this.state = {
-      couldRender: false,
-    };
+    this.state = { couldRender: false };
   }
 
   componentDidMount() {
@@ -15,13 +13,14 @@ export default class extends Component {
     fetch(`https://api.mercadolibre.com/items/${id}`)
       .then((data) => data.json())
       .then((data) => {
-        this.setState({ data: data, couldRender: true });
+        this.setState({ data, couldRender: true });
       })
       .catch();
   }
 
   render() {
-    if (!this.state.couldRender) return <div>Loading...</div>;
+    const { couldRender } = this.state;
+    if (!couldRender) return <div>Loading...</div>;
 
     const { data } = this.state;
     const { thumbnail, title, price } = data;
@@ -33,7 +32,7 @@ export default class extends Component {
         <h1 data-testid="product-detail-name">{title}</h1>
         <img width="150px" height="200px" alt="" src={thumbnail} />
         <span>{price}</span>
-        <AddToCart data-testid="product-detail-add-to-cart" data={data} id={id} addToCart={addToCart} />
+        <AddToCart data={data} id={id} addToCart={addToCart} />
       </div>
     );
   }
