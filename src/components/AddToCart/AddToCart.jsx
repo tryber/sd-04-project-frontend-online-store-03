@@ -11,11 +11,7 @@ export default class extends Component {
     return (
       <button
         type="button"
-        onClick={(e) => {
-          e.stopPropagation();
-          addToCart(item);
-          console.log(item);
-        }}
+        onClick={() => addToCart(item)}
       >
         <AddBoxIcon data-testid="product-add-to-cart" />
         Add to cart

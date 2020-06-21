@@ -5,7 +5,7 @@ export default class extends Component {
     const { id, price, title, quantity } = this.props.item;
     return (
       <div>
-        <p>{title}</p>
+        <p data-testid="shopping-cart-product-name">{title}</p>
         <p>{price}</p>
         <p data-testid="shopping-cart-product-quantity">{quantity}</p>
       </div>

@@ -4,7 +4,6 @@ import InCartItem from '../InCartItem/InCartItem';
 export default class extends Component {
   render() {
     const { cartItems } = this.props;
-    console.log(cartItems, "Cart");
     if (cartItems.length === 0) {
       return (
         <div className="main">
