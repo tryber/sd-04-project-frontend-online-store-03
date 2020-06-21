@@ -39,13 +39,16 @@ class App extends Component {
   }
 
   addToCart(product) {
+    console.log('Alisson é o cara!!!!!')
     this.setState((state) => {
-      const index = state.cartItems.findIndex((item) => item.id === product.id);
-      const exists = index >= 0;
-      if (!exists) {
-        return { cartItems: [...state.cartItems, { ...product, quantity: 1 }] };
-      }
-      console.log(state.cartItems[index]);
+      console.log(state);
+      // const index = state.cartItems.findIndex((item) => item.id === product.id);
+      // const exists = index >= 0;
+      // const exists = true;
+      // if (!exists) {
+      //   return { cartItems: [...state.cartItems, { ...product, quantity: 1 }] };
+      // }
+      // console.log(state.cartItems[index]);
       // return {
       //   cartItems: arrayUpdateAt(state.cartItems, index, {
       //     ...state.cartItems[index],
