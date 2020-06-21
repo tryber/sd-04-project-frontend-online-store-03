@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import { Link } from 'react-router-dom';
 import InCartItem from '../InCartItem/InCartItem';
 
 export default class extends Component {
@@ -12,17 +13,22 @@ export default class extends Component {
       );
     }
     return (
-      <>
+      <div>
         <div className="cart-item">
           {cartItems.map((item) => (
             <InCartItem key={item.id} item={item} changeQuantity={changeQuantity} />
           ))}
         </div>
-        <div data-testid="shopping-cart-product-quantity">
-          Total:
-          {cartItems.reduce((acc, { quantity }) => acc + quantity, 0)}
+        <div>
+          <div data-testid="shopping-cart-product-quantity">
+            Total:
+            {cartItems.reduce((acc, { quantity }) => acc + quantity, 0)}
+          </div>
+          <Link to="/checkout">
+            <button type="button">Finalizar Compra</button>
+          </Link>
         </div>
-      </>
+      </div>
     );
   }
 }

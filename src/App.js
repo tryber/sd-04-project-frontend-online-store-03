@@ -4,7 +4,7 @@ import Header from './components/Header/Header';
 import SideBar from './components/SideBar/SideBar';
 import Main from './components/Main/Main';
 import Cart from './components/Cart/Cart';
-import Finish from './components/Finish/Finish';
+import Checkout from './components/Checkout/Checkout';
 import ProductDetail from './components/ProductDetail/ProductDetail';
 import NotFound from './components/NotFound/NotFound';
 import './App.css';
@@ -126,7 +126,7 @@ class App extends Component {
                 />
               )}
             />
-            <Route exact path="/cart/finish" component={Finish} />
+            <Route exact path="/checkout" component={Checkout} />
             <Route
               exact
               path="/products/:id"

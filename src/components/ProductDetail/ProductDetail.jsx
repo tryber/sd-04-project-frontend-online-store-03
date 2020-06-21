@@ -1,6 +1,14 @@
 import React, { Component } from 'react';
 import AddToCart from '../AddToCart/AddToCart';
 
+function addEvaluation() {
+  const evaluationToSend = document.querySelector('#evaluation').value;
+  const evaluationSended = document.querySelector('#evaluation-sended');
+  const comment = document.createElement('li');
+  comment.innerHTML = evaluationToSend;
+  evaluationSended.appendChild(comment);
+}
+
 export default class extends Component {
   constructor(props) {
     super(props);
@@ -18,6 +26,7 @@ export default class extends Component {
       .catch();
   }
 
+
   render() {
     const { couldRender } = this.state;
     if (!couldRender) return <div>Loading...</div>;
@@ -28,11 +37,28 @@ export default class extends Component {
     const { id } = match.params;
 
     return (
-      <div className="main">
+      <div>
         <h1 data-testid="product-detail-name">{title}</h1>
         <img width="150px" height="200px" alt="" src={thumbnail} />
         <span>{price}</span>
         <AddToCart data={data} id={id} addToCart={addToCart} />
+        <form>
+          <textarea
+            data-testid="product-detail-evaluation"
+            placeholder="Deixe seus comentários"
+            id="evaluation"
+          />
+          <button
+            type="submit"
+            onClick={(e) => {
+              e.preventDefault();
+              addEvaluation();
+            }}
+          >
+            Enviar
+          </button>
+        </form>
+        <ul id="evaluation-sended" />
       </div>
     );
   }
