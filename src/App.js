@@ -22,7 +22,6 @@ class App extends Component {
       couldSet: false,
       textToSearch: '',
       cartItems: [],
-      totalCartItems: 0,
     };
     this.setfilteredProducts = this.setfilteredProducts.bind(this);
     this.setTextToSearch = this.setTextToSearch.bind(this);
@@ -41,12 +40,6 @@ class App extends Component {
 
   setCategoryId(id) {
     this.setState({ categoryId: id });
-  }
-
-  setTotalCartItems() {
-    const { cartItems } = this.state;
-    const total = cartItems.reduce((acc, { quantity }) => acc + quantity, 0);
-    this.setState({ totalCartItems: total });
   }
 
   changeQuantity(signal, product) {
@@ -100,7 +93,7 @@ class App extends Component {
           setTextToSearch={this.setTextToSearch}
           categoryId={categoryId}
           setfilteredProducts={this.setfilteredProducts}
-          totalCartItems={totalCartItems}
+          cartItems={cartItems}
         />
         <div className="row">
           <SideBar

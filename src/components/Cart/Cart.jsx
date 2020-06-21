@@ -3,7 +3,7 @@ import InCartItem from '../InCartItem/InCartItem';
 
 export default class extends Component {
   render() {
-    const { cartItems, changeQuantity, totalCartItems } = this.props;
+    const { cartItems, changeQuantity } = this.props;
     if (cartItems.length === 0) {
       return (
         <div className="main">
@@ -20,7 +20,7 @@ export default class extends Component {
         </div>
         <div data-testid="shopping-cart-product-quantity">
           Total:
-          {totalCartItems}
+          {cartItems.reduce((acc, { quantity }) => acc + quantity, 0)}
         </div>
       </>
     );
