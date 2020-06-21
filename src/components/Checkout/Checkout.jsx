@@ -13,7 +13,7 @@ export default class extends Component {
         ))}
         <h2>
           Valor total: R$
-          {cartItems.reduce((acc, { price, quantity }) => price * quantity + acc, 0)}
+          {cartItems.reduce((acc, { price, quantity }) => (price * quantity) + acc, 0)}
         </h2>
         <CheckoutForm />
       </div>
