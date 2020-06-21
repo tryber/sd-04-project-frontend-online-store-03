@@ -10,7 +10,10 @@ export default class extends Component {
       <button
         data-testid={testid}
         type="button"
-        onClick={() => addToCart(item)}
+        onClick={(e) => {
+          e.preventDefault();
+          addToCart(item);
+        }}
       >
         <AddBoxIcon />
         Add to cart

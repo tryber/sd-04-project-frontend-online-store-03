@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
+import ShoppingCart from '@material-ui/icons/ShoppingCart';
 import InCartItem from '../InCartItem/InCartItem';
 
 export default class extends Component {
@@ -20,8 +21,12 @@ export default class extends Component {
           ))}
         </div>
         <div>
+          <ShoppingCart
+            fontSize="large"
+            style={{ color: 'black' }}
+          />
+          Total:
           <div data-testid="shopping-cart-size">
-            Total:
             {cartItems.reduce((acc, { quantity }) => acc + quantity, 0)}
           </div>
           <Link to="/checkout">
