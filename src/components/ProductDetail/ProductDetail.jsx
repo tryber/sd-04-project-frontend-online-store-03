@@ -26,7 +26,6 @@ export default class extends Component {
       .catch();
   }
 
-
   render() {
     const { couldRender } = this.state;
     if (!couldRender) return <div>Loading...</div>;
@@ -41,7 +40,12 @@ export default class extends Component {
         <h1 data-testid="product-detail-name">{title}</h1>
         <img width="150px" height="200px" alt="" src={thumbnail} />
         <span>{price}</span>
-        <AddToCart data={data} id={id} addToCart={addToCart} />
+        <AddToCart
+          testid="product-detail-add-to-cart"
+          data={data}
+          id={id}
+          addToCart={addToCart}
+        />
         <form>
           <textarea
             data-testid="product-detail-evaluation"

@@ -126,7 +126,11 @@ class App extends Component {
                 />
               )}
             />
-            <Route exact path="/checkout" component={Checkout} />
+            <Route
+              exact
+              path="/checkout"
+              render={(props) => <Checkout {...props} cartItems={cartItems} />}
+            />
             <Route
               exact
               path="/products/:id"

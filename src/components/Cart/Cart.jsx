@@ -25,7 +25,9 @@ export default class extends Component {
             {cartItems.reduce((acc, { quantity }) => acc + quantity, 0)}
           </div>
           <Link to="/checkout">
-            <button type="button">Finalizar Compra</button>
+            <button type="button" data-testid="checkout-products">
+              Finalizar Compra
+            </button>
           </Link>
         </div>
       </div>
