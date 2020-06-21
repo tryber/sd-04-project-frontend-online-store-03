@@ -20,7 +20,7 @@ export default class extends Component {
           ))}
         </div>
         <div>
-          <div>
+          <div data-testid="shopping-cart-size">
             Total:
             {cartItems.reduce((acc, { quantity }) => acc + quantity, 0)}
           </div>

@@ -3,7 +3,7 @@ import ProductCard from '../ProductCard/ProductCard';
 
 export default class extends Component {
   render() {
-    const { filteredProducts, categoryId, couldSet, addToCart } = this.props;
+    const { filteredProducts, categoryId, couldSet, addToCart, cartItems } = this.props;
 
     if (!couldSet) {
       return (
@@ -21,6 +21,7 @@ export default class extends Component {
             data={item}
             categoryId={categoryId}
             addToCart={addToCart}
+            cartItems={cartItems}
           />
         ))}
       </div>

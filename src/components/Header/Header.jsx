@@ -55,7 +55,7 @@ export default class extends Component {
             fontSize="large"
             style={{ color: 'white' }}
           />
-          <div>
+          <div data-testid="shopping-cart-size">
             {cartItems.reduce((acc, { quantity }) => acc + quantity, 0)}
           </div>
         </Link>

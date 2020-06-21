@@ -111,6 +111,7 @@ class App extends Component {
                   couldSet={couldSet}
                   categoryId={categoryId}
                   addToCart={this.addToCart}
+                  cartItems={cartItems}
                 />
               )}
             />
@@ -134,7 +135,9 @@ class App extends Component {
             <Route
               exact
               path="/products/:id"
-              render={(props) => <ProductDetail {...props} addToCart={this.addToCart} />}
+              render={(props) => (
+                <ProductDetail {...props} addToCart={this.addToCart} cartItems={cartItems} />
+              )}
             />
             <Route path="/" component={NotFound} />
           </Switch>

@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import ShoppingCart from '@material-ui/icons/ShoppingCart';
 import AddToCart from '../AddToCart/AddToCart';
 
 function addEvaluation() {
@@ -32,7 +33,7 @@ export default class extends Component {
 
     const { data } = this.state;
     const { thumbnail, title, price } = data;
-    const { match, addToCart } = this.props;
+    const { match, addToCart, cartItems } = this.props;
     const { id } = match.params;
 
     return (
@@ -40,12 +41,15 @@ export default class extends Component {
         <h1 data-testid="product-detail-name">{title}</h1>
         <img width="150px" height="200px" alt="" src={thumbnail} />
         <span>{price}</span>
-        <AddToCart
-          testid="product-detail-add-to-cart"
-          data={data}
-          id={id}
-          addToCart={addToCart}
+        <AddToCart testid="product-detail-add-to-cart" data={data} id={id} addToCart={addToCart} />
+        <ShoppingCart
+          data-testid="shopping-cart-button"
+          fontSize="large"
+          style={{ color: 'black' }}
         />
+        <div data-testid="shopping-cart-size">
+          {cartItems.reduce((acc, { quantity }) => acc + quantity, 0)}
+        </div>
         <form>
           <textarea
             data-testid="product-detail-evaluation"

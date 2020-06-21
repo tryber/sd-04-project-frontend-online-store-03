@@ -5,7 +5,7 @@ import AddToCart from '../AddToCart/AddToCart';
 
 export default class extends Component {
   render() {
-    const { data, addToCart } = this.props;
+    const { data, addToCart, cartItems } = this.props;
     const { title, price, thumbnail, id } = data;
     return (
       <div className="ProductCard" data-testid="product">
@@ -15,7 +15,13 @@ export default class extends Component {
         <Link to={`/products/${id}`} data-testid="product-detail-link">
           Detalhes
         </Link>
-        <AddToCart testid="product-add-to-cart" data={data} id={id} addToCart={addToCart} />
+        <AddToCart
+          testid="product-add-to-cart"
+          data={data}
+          id={id}
+          addToCart={addToCart}
+          cartItems={cartItems}
+        />
       </div>
     );
   }
