@@ -9,11 +9,8 @@ export default class extends Component {
     };
 
     return (
-      <button
-        type="button"
-        onClick={() => addToCart(item)}
-      >
-        <AddBoxIcon data-testid="product-add-to-cart" />
+      <button type="button" onClick={() => addToCart(item)}>
+        <AddBoxIcon />
         Add to cart
       </button>
     );

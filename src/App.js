@@ -24,6 +24,7 @@ class App extends Component {
     this.setTextToSearch = this.setTextToSearch.bind(this);
     this.setCategoryId = this.setCategoryId.bind(this);
     this.addToCart = this.addToCart.bind(this);
+    this.changeQuantity = this.changeQuantity.bind(this);
   }
 
   setfilteredProducts(arrayOfProducts) {
@@ -48,6 +49,25 @@ class App extends Component {
         cartItems: arrayUpdateAt(this.state.cartItems, index, {
           ...this.state.cartItems[index],
           quantity: this.state.cartItems[index].quantity + 1,
+        }),
+      });
+    }
+  }
+
+  changeQuantity(signal, product) {
+    const index = this.state.cartItems.findIndex((item) => item.id === product.id);
+    if (signal === '+') {
+      this.setState({
+        cartItems: arrayUpdateAt(this.state.cartItems, index, {
+          ...this.state.cartItems[index],
+          quantity: this.state.cartItems[index].quantity + 1,
+        }),
+      });
+    } else if (signal === '-') {
+      this.setState({
+        cartItems: arrayUpdateAt(this.state.cartItems, index, {
+          ...this.state.cartItems[index],
+          quantity: this.state.cartItems[index].quantity - 1,
         }),
       });
     }
@@ -92,7 +112,9 @@ class App extends Component {
             <Route
               exact
               path="/cart"
-              render={(props) => <Cart {...props} cartItems={cartItems} />}
+              render={(props) => (
+                <Cart {...props} cartItems={cartItems} changeQuantity={this.changeQuantity} />
+              )}
             />
             <Route exact path="/cart/finish" component={Finish} />
             <Route

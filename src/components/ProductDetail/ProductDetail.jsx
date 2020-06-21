@@ -33,7 +33,7 @@ export default class extends Component {
         <h1 data-testid="product-detail-name">{title}</h1>
         <img width="150px" height="200px" alt="" src={thumbnail} />
         <span>{price}</span>
-        <AddToCart data={data} id={id} addToCart={addToCart} />
+        <AddToCart data-testid="product-detail-add-to-cart" data={data} id={id} addToCart={addToCart} />
       </div>
     );
   }

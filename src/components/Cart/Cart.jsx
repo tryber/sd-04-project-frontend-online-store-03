@@ -3,7 +3,7 @@ import InCartItem from '../InCartItem/InCartItem';
 
 export default class extends Component {
   render() {
-    const { cartItems } = this.props;
+    const { cartItems, changeQuantity } = this.props;
     if (cartItems.length === 0) {
       return (
         <div className="main">
@@ -12,11 +12,16 @@ export default class extends Component {
       );
     }
     return (
-      <div className="cart-item">
-        {cartItems.map((item) => (
-          <InCartItem key={item.id} item={item} />
-        ))}
-      </div>
+      <>
+        <div className="cart-item">
+          {cartItems.map((item) => (
+            <InCartItem key={item.id} item={item} changeQuantity={changeQuantity}/>
+          ))}
+        </div>
+        <div data-testid="shopping-cart-product-quantity">
+          Total:{cartItems.reduce((acc, curr) => acc + curr.quantity, 0) }
+        </div>
+      </>
     );
   }
 }

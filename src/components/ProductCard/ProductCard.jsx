@@ -15,7 +15,7 @@ export default class extends Component {
         <Link to={`/products/${id}`} data-testid="product-detail-link">
           Detalhes
         </Link>
-        <AddToCart data={data} id={id} addToCart={addToCart} />
+        <AddToCart data-testid="product-add-to-cart" data={data} id={id} addToCart={addToCart} />
       </div>
     );
   }
