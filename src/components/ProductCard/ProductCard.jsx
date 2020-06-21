@@ -5,8 +5,14 @@ import AddToCart from '../AddToCart/AddToCart';
 
 export default class extends Component {
   render() {
-    const { data } = this.props;
-    const { title, price, thumbnail, id } = data;
+    const { data, addToCart, cartItems } = this.props;
+    const {
+      title,
+      price,
+      thumbnail,
+      id,
+      shipping: { free_shipping: freeShipping },
+    } = data;
     return (
       <div className="ProductCard" data-testid="product">
         <h3>{title}</h3>
@@ -15,7 +21,15 @@ export default class extends Component {
         <Link to={`/products/${id}`} data-testid="product-detail-link">
           Detalhes
         </Link>
-        <AddToCart data={data} id={id} />
+        <div>{freeShipping ? <div data-testid="free-shipping">Frete Grátis</div> : <div />}</div>
+
+        <AddToCart
+          testid="product-add-to-cart"
+          data={data}
+          id={id}
+          addToCart={addToCart}
+          cartItems={cartItems}
+        />
       </div>
     );
   }
