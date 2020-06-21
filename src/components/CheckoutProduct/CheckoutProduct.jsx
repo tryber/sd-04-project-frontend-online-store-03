@@ -8,7 +8,7 @@ export default class extends Component {
       <div>
         <p data-testid="shopping-cart-product-name">{title}</p>
         <p>{price}</p>
-        <p data-testid="shopping-cart-product-quantity">{quantity}</p>
+        <p>{quantity}</p>
         <p>
           Total: R$
           {price * quantity}
