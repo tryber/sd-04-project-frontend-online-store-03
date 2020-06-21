@@ -6,7 +6,13 @@ import AddToCart from '../AddToCart/AddToCart';
 export default class extends Component {
   render() {
     const { data, addToCart, cartItems } = this.props;
-    const { title, price, thumbnail, id, shipping: { free_shipping } } = data;
+    const {
+      title,
+      price,
+      thumbnail,
+      id,
+      shipping: { free_shipping: freeShipping },
+    } = data;
     return (
       <div className="ProductCard" data-testid="product">
         <h3>{title}</h3>
@@ -15,9 +21,8 @@ export default class extends Component {
         <Link to={`/products/${id}`} data-testid="product-detail-link">
           Detalhes
         </Link>
-        <div data-testid="free-shipping">
-          {free_shipping ? "Frete Grátis" : null}
-        </div>
+        <div>{freeShipping ? <div data-testid="free-shipping">Frete Grátis</div> : <div />}</div>
+
         <AddToCart
           testid="product-add-to-cart"
           data={data}

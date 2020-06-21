@@ -18,7 +18,7 @@ export default class extends Component {
           +
         </button>
         <button
-          data-testid="product-decreate-quantity"
+          data-testid="product-decrease-quantity"
           value="-"
           type="button"
           onClick={(e) => changeQuantity(e.target.value, item)}

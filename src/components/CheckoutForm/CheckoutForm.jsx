@@ -26,7 +26,7 @@ export default class extends Component {
         </label>
         <label htmlFor="adress">
           Endereço
-          <input type="text" id="adress" data-testid="checkout-adreess" />
+          <input type="text" id="adress" data-testid="checkout-address" />
         </label>
         <button type="button">Finalizar Compra</button>
       </form>

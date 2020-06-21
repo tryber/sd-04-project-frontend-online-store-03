@@ -9,7 +9,7 @@ export default class extends Component {
       <div>
         <h1>Checkout</h1>
         {cartItems.map((item) => (
-          <CheckoutProduct value={item.id} item={item} />
+          <CheckoutProduct key={item.id} value={item.id} item={item} />
         ))}
         <h2>
           Valor total: R$
