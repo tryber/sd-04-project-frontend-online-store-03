@@ -6,7 +6,7 @@ export default class extends Component {
     const { price, title, quantity } = item;
     return (
       <div>
-        <p data-testid="shopping-cart-product-name">{title}</p>
+        <p>{title}</p>
         <p>{price}</p>
         <p>{quantity}</p>
         <p>

@@ -13,7 +13,10 @@ export default class extends Component {
           data-testid="product-increase-quantity"
           value="+"
           type="button"
-          onClick={(e) => changeQuantity(e.target.value, item)}
+          onClick={(e) => {
+            e.preventDefault();
+            changeQuantity(e.target.value, item);
+          }}
         >
           +
         </button>
@@ -21,7 +24,10 @@ export default class extends Component {
           data-testid="product-decrease-quantity"
           value="-"
           type="button"
-          onClick={(e) => changeQuantity(e.target.value, item)}
+          onClick={(e) => {
+            e.preventDefault();
+            changeQuantity(e.target.value, item);
+          }}
         >
           -
         </button>

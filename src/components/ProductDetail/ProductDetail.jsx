@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import { Link } from 'react-router-dom';
 import ShoppingCart from '@material-ui/icons/ShoppingCart';
 import AddToCart from '../AddToCart/AddToCart';
 
@@ -46,7 +47,7 @@ export default class extends Component {
           fontSize="large"
           style={{ color: 'black' }}
         />
-        <div data-testid="shopping-cart-size">
+        <div>
           {cartItems.reduce((acc, { quantity }) => acc + quantity, 0)}
         </div>
         <form>
@@ -64,6 +65,7 @@ export default class extends Component {
           >
             Enviar
           </button>
+          <Link to="/"><p>Voltar</p></Link>
         </form>
         <ul id="evaluation-sended" />
       </div>

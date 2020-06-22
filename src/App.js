@@ -30,6 +30,19 @@ class App extends Component {
     this.changeQuantity = this.changeQuantity.bind(this);
   }
 
+  componentDidMount() {
+    const localCartItem = JSON.parse(localStorage.getItem('cartItems'));
+    const localStorageToState = (state) => {
+      if (state) this.setState({ cartItems: state });
+    };
+    return localStorageToState(localCartItem);
+  }
+
+  componentDidUpdate() {
+    const { cartItems } = this.state;
+    localStorage.setItem('cartItems', JSON.stringify(cartItems));
+  }
+
   setfilteredProducts(arrayOfProducts) {
     this.setState({ filteredProducts: arrayOfProducts, couldSet: true });
   }

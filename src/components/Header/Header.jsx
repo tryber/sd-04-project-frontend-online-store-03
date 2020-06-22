@@ -41,7 +41,8 @@ export default class extends Component {
           <button
             type="button"
             data-testid="query-button"
-            onClick={() => {
+            onClick={(e) => {
+              e.preventDefault();
               setTextToSearch(inputValue);
               this.setResults(inputValue);
             }}

@@ -33,19 +33,24 @@ export default class extends Component {
     const { categories, canRenderList } = this.state;
     return (
       <nav className="nav">
-        {canRenderList
-          ? categories.map((item) => (
+        {canRenderList ? (
+          categories.map((item) => (
             <Link
               data-testid="category"
               to="/"
               key={item.id}
               id={item.id}
-              onClick={(e) => this.setResults(e.target.id)}
+              onClick={(e) => {
+                e.preventDefault();
+                this.setResults(e.target.id);
+              }}
             >
               {item.name}
             </Link>
           ))
-          : <div>loading...</div>}
+        ) : (
+          <div>loading...</div>
+        )}
       </nav>
     );
   }
