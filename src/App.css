@@ -123,42 +123,6 @@
   width: 10vw;
 }
 
-/* BLOCO DE ESTILOS SIDEBAR */
-.nav {
-  background-color: rgb(230, 230, 230);
-  display: flex;
-  flex-flow: column;
-  height: fit-content;
-  max-width: 20vw;
-  min-width: 20vw;
-  padding-top: 25px;
-}
-
-.nav a {
-  color: rgb(27, 27, 27);
-  font-size: 16px;
-  font-weight: 400;
-  margin: 5px 8px;
-  opacity: 0.5;
-  text-decoration: none;
-  transition: ease 1s;
-}
-
-.nav a:hover {
-  font-weight: 400;
-  opacity: 1;
-  transition: ease 1s;
-}
-
-.flex {
-  align-items: center;
-  color: white;
-  display: flex;
-  flex-flow: row;
-  margin: auto 30px;
-  text-decoration: none;
-}
-
 /* BLOCO DE ESTILOS PRODUCTDETAIL */
 .ProductDetail {
   background-color: white;
@@ -221,8 +185,44 @@
   width: fit-content;
 }
 
+/* BLOCO DE ESTILOS SIDEBAR */
+.nav {
+  background-color: rgb(230, 230, 230);
+  display: flex;
+  flex-flow: column;
+  height: fit-content;
+  max-width: 20vw;
+  min-width: 20vw;
+  padding-top: 25px;
+}
+
+.nav a {
+  color: rgb(27, 27, 27);
+  font-size: 16px;
+  font-weight: 400;
+  margin: 5px 8px;
+  opacity: 0.5;
+  text-decoration: none;
+  transition: ease 1s;
+}
+
+.nav a:hover {
+  font-weight: 400;
+  opacity: 1;
+  transition: ease 1s;
+}
+
+.flex {
+  align-items: center;
+  color: white;
+  display: flex;
+  flex-flow: row;
+  margin: auto 30px;
+  text-decoration: none;
+}
 
 /* ESTILOS OUTRAS TELAS */
+
 @media (prefers-reduced-motion: no-preference) {
 
   .App-logo {

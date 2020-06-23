@@ -71,7 +71,7 @@ class App extends Component {
       this.setState({
         cartItems: arrayUpdateAt(cartItems, index, {
           ...cartItems[index],
-          quantity: cartItems[index].quantity - 1
+          quantity: cartItems[index].quantity - 1,
         }),
       });
     }
