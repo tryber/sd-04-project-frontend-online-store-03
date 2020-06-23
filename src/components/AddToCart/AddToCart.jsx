@@ -8,6 +8,7 @@ export default class extends Component {
 
     return (
       <button
+        className="btn-add-to-cart"
         data-testid={testid}
         type="button"
         onClick={(e) => {
@@ -16,7 +17,7 @@ export default class extends Component {
         }}
       >
         <AddBoxIcon />
-        Add to cart
+        Adicionar ao carrinho
       </button>
     );
   }

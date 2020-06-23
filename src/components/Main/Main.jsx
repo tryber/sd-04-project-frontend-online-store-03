@@ -7,7 +7,7 @@ export default class extends Component {
 
     if (!couldSet) {
       return (
-        <div data-testid="home-initial-message">
+        <div className="main" data-testid="home-initial-message">
           Digite algum termo de pesquisa ou escolha uma categoria.
         </div>
       );
@@ -15,6 +15,7 @@ export default class extends Component {
 
     return (
       <div className="main">
+        <span className="search-results">Exibindo resultados da pesquisa:</span>
         {filteredProducts.map((item) => (
           <ProductCard
             key={item.id}

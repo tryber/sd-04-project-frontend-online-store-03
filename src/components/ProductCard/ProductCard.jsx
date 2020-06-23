@@ -6,30 +6,27 @@ import AddToCart from '../AddToCart/AddToCart';
 export default class extends Component {
   render() {
     const { data, addToCart, cartItems } = this.props;
-    const {
-      title,
-      price,
-      thumbnail,
-      id,
-      shipping: { free_shipping: freeShipping },
-    } = data;
+    const { title, price, thumbnail, id, shipping: { free_shipping: freeShipping } } = data;
     return (
       <div className="ProductCard" data-testid="product">
-        <h3>{title}</h3>
         <img src={thumbnail} alt={title} />
-        <p>{price}</p>
-        <Link to={`/products/${id}`} data-testid="product-detail-link">
-          Detalhes
-        </Link>
-        <div>{freeShipping ? <div data-testid="free-shipping">Frete Grátis</div> : <div />}</div>
-
+        <div className="ProductCard-text-content">
+          <h2 className="ProductCard-product-name">{title}</h2>
+          <p>R$ {price.toFixed(2)}</p>
+        <div>{freeShipping ? <div className="free-shipping" data-testid="free-shipping">Frete Grátis</div> : <div />}</div>
+          <div className="ProductCard-content-bottom-part">
+          <Link to={`/products/${id}`} data-testid="product-detail-link">
+            Detalhes
+          </Link>
         <AddToCart
           testid="product-add-to-cart"
           data={data}
           id={id}
           addToCart={addToCart}
           cartItems={cartItems}
-        />
+          />
+          </div>
+          </div>
       </div>
     );
   }

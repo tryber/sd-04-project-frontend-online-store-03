@@ -23,6 +23,8 @@ class App extends Component {
       textToSearch: '',
       cartItems: [],
     };
+    // this.renderHeader = this.renderHeader.bind(this);
+    // this.renderSideBar = this.renderSideBar.bind(this);
     this.setfilteredProducts = this.setfilteredProducts.bind(this);
     this.setTextToSearch = this.setTextToSearch.bind(this);
     this.setCategoryId = this.setCategoryId.bind(this);
@@ -58,19 +60,19 @@ class App extends Component {
   changeQuantity(signal, product) {
     const { cartItems } = this.state;
     const index = cartItems.findIndex((item) => item.id === product.id);
-    if (signal === '+') {
+    if ((signal === '+') && (cartItems[index].quantity < product.available_quantity)) {
       this.setState({
         cartItems: arrayUpdateAt(cartItems, index, {
           ...cartItems[index],
           quantity: cartItems[index].quantity + 1,
         }),
       });
-    } else if (signal === '-') {
+    } else if ((signal === '-') && (cartItems[index].quantity > 0)) {
       this.setState({
         cartItems: arrayUpdateAt(cartItems, index, {
           ...cartItems[index],
           quantity: cartItems[index].quantity - 1,
-        }),
+        })
       });
     }
   }
@@ -91,64 +93,59 @@ class App extends Component {
     }
   }
 
+  renderHeader() {
+    const { categoryId, cartItems } = this.state;
+    return (
+      <Header
+        setTextToSearch={this.setTextToSearch} categoryId={categoryId}
+        setfilteredProducts={this.setfilteredProducts} cartItems={cartItems}
+      />
+    );
+  }
+
+  renderSideBar() {
+    const { textToSearch } = this.state;
+    return (
+      <SideBar
+        setfilteredProducts={this.setfilteredProducts} textToSearch={textToSearch}
+        setCategoryId={this.setCategoryId}
+      />
+    );
+  }
+
+  renderMain() {
+    const { filteredProducts, couldSet, categoryId, cartItems } = this.state;
+    return (
+      <Main
+        filteredProducts={filteredProducts} couldSet={couldSet} categoryId={categoryId}
+        addToCart={this.addToCart} cartItems={cartItems}
+      />
+    );
+  }
+
+  renderCart() {
+    const { cartItems, totalCartItems } = this.state;
+    const { ...props } = this.props;
+    return (
+      <Cart
+        {...props} cartItems={cartItems} changeQuantity={this.changeQuantity} totalCartItems={totalCartItems}
+      />
+    );
+  }
+
   render() {
-    const {
-      filteredProducts,
-      couldSet,
-      textToSearch,
-      categoryId,
-      cartItems,
-      totalCartItems,
-    } = this.state;
+    const { cartItems } = this.state;
     return (
       <BrowserRouter>
-        <Header
-          setTextToSearch={this.setTextToSearch}
-          categoryId={categoryId}
-          setfilteredProducts={this.setfilteredProducts}
-          cartItems={cartItems}
-        />
-        <div className="row">
-          <SideBar
-            setfilteredProducts={this.setfilteredProducts}
-            textToSearch={textToSearch}
-            setCategoryId={this.setCategoryId}
-          />
+        {this.renderHeader()}
+        <div className="page-content">
+          {this.renderSideBar()}
           <Switch className="main">
-            <Route
-              exact
-              path="/"
-              render={() => (
-                <Main
-                  filteredProducts={filteredProducts}
-                  couldSet={couldSet}
-                  categoryId={categoryId}
-                  addToCart={this.addToCart}
-                  cartItems={cartItems}
-                />
-              )}
+            <Route exact path="/" render={() => this.renderMain()} />
+            <Route exact path="/cart" render={(props) => this.renderCart(props)}
             />
-            <Route
-              exact
-              path="/cart"
-              render={(props) => (
-                <Cart
-                  {...props}
-                  cartItems={cartItems}
-                  changeQuantity={this.changeQuantity}
-                  totalCartItems={totalCartItems}
-                />
-              )}
-            />
-            <Route
-              exact
-              path="/checkout"
-              render={(props) => <Checkout {...props} cartItems={cartItems} />}
-            />
-            <Route
-              exact
-              path="/products/:id"
-              render={(props) => (
+            <Route exact path="/checkout" render={(props) => <Checkout {...props} cartItems={cartItems} />} />
+            <Route exact path="/products/:id" render={(props) => (
                 <ProductDetail {...props} addToCart={this.addToCart} cartItems={cartItems} />
               )}
             />
