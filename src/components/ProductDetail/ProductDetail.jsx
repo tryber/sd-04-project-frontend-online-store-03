@@ -15,6 +15,7 @@ export default class extends Component {
   constructor(props) {
     super(props);
     this.state = { couldRender: false };
+    this.renderCommentTextarea = this.renderCommentTextarea.bind(this);
   }
 
   componentDidMount() {
