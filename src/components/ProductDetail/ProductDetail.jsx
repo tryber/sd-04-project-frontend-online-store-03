@@ -67,7 +67,7 @@ export default class extends Component {
               />
               <ShoppingCart fontSize="large" style={{ color: 'black' }} />
               {cartItems.reduce((acc, { quantity }) => acc + quantity, 0)}
-            </div>{this.renderCommentTextarea()}
+            </div>{() => this.renderCommentTextarea()}
           </div>
         </div>
         <Link to="/"><p>Voltar</p></Link><ul id="evaluation-sended" />
