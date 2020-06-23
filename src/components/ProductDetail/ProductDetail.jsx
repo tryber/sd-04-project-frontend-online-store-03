@@ -11,11 +11,28 @@ function addEvaluation() {
   evaluationSended.appendChild(comment);
 }
 
+function renderCommentTextarea() {
+  return (
+    <form>
+      <textarea
+        className="ProductDetail-textarea" data-testid="product-detail-evaluation"
+        placeholder="Deixar comentário" id="evaluation"
+      />
+      <button
+        type="submit" onClick={(e) => {
+          e.preventDefault();
+          addEvaluation();
+        }}
+      >Enviar comentário
+      </button>
+    </form>
+  );
+}
+
 export default class extends Component {
   constructor(props) {
     super(props);
     this.state = { couldRender: false };
-    this.renderCommentTextarea = this.renderCommentTextarea.bind(this);
   }
 
   componentDidMount() {
@@ -29,23 +46,6 @@ export default class extends Component {
       .catch((error) => console.log(`Erro: ${error}`));
   }
 
-  renderCommentTextarea = () => {
-    return (
-      <form>
-        <textarea
-          className="ProductDetail-textarea" data-testid="product-detail-evaluation"
-          placeholder="Deixar comentário" id="evaluation"
-        />
-        <button
-          type="submit" onClick={(e) => {
-            e.preventDefault();
-            addEvaluation();
-          }}
-        >Enviar comentário
-        </button>
-      </form>
-    );
-  }
   render() {
     const { couldRender } = this.state;
     if (!couldRender) return <div>Loading...</div>;
@@ -68,7 +68,7 @@ export default class extends Component {
               />
               <ShoppingCart fontSize="large" style={{ color: 'black' }} />
               {cartItems.reduce((acc, { quantity }) => acc + quantity, 0)}
-            </div>{() => this.renderCommentTextarea()}
+            </div>{renderCommentTextarea()}
           </div>
         </div>
         <Link to="/"><p>Voltar</p></Link><ul id="evaluation-sended" />
