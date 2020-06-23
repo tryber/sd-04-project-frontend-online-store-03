@@ -28,7 +28,7 @@ export default class extends Component {
       .catch((error) => console.log(`Erro: ${error}`));
   }
 
-  renderCommentTextarea() {
+  renderCommentTextarea = () => {
     return (
       <form>
         <textarea

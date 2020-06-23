@@ -145,7 +145,8 @@ class App extends Component {
             <Route exact path="/" render={() => this.renderMain()} />
             <Route exact path="/cart" render={(props) => this.renderCart(props)} />
             <Route
-              exact path="/checkout" render={(props) => <Checkout {...props} cartItems={cartItems} />}
+              exact path="/checkout"
+              render={(props) => <Checkout {...props} cartItems={cartItems} />}
             />
             <Route
               exact path="/products/:id" render={(props) => (
