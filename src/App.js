@@ -71,8 +71,8 @@ class App extends Component {
       this.setState({
         cartItems: arrayUpdateAt(cartItems, index, {
           ...cartItems[index],
-          quantity: cartItems[index].quantity - 1,
-        })
+          quantity: cartItems[index].quantity - 1
+        }),
       });
     }
   }
@@ -128,7 +128,8 @@ class App extends Component {
     const { ...props } = this.props;
     return (
       <Cart
-        {...props} cartItems={cartItems} changeQuantity={this.changeQuantity} totalCartItems={totalCartItems}
+        {...props} cartItems={cartItems} changeQuantity={this.changeQuantity}
+        totalCartItems={totalCartItems}
       />
     );
   }
@@ -142,10 +143,12 @@ class App extends Component {
           {this.renderSideBar()}
           <Switch className="main">
             <Route exact path="/" render={() => this.renderMain()} />
-            <Route exact path="/cart" render={(props) => this.renderCart(props)}
+            <Route exact path="/cart" render={(props) => this.renderCart(props)} />
+            <Route
+              exact path="/checkout" render={(props) => <Checkout {...props} cartItems={cartItems} />}
             />
-            <Route exact path="/checkout" render={(props) => <Checkout {...props} cartItems={cartItems} />} />
-            <Route exact path="/products/:id" render={(props) => (
+            <Route
+              exact path="/products/:id" render={(props) => (
                 <ProductDetail {...props} addToCart={this.addToCart} cartItems={cartItems} />
               )}
             />

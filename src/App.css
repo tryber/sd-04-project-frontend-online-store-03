@@ -5,7 +5,7 @@
 
 .page-content {
   align-items: flex-start;
-  background-color: rgb(230,230, 230);
+  background-color: rgb(230, 230, 230);
   display: flex;
   flex-flow: row;
   justify-content: flex-start;
@@ -23,7 +23,7 @@
   margin: 0;
   min-height: 15vh;
   padding: 0 5%;
- }
+}
 
 .search-form {
   background-color: white;
@@ -44,42 +44,6 @@
   flex-flow: row;
   justify-content: center;
   width: 40px;
-}
-
-/* BLOCO DE ESTILOS SIDEBAR */
-.nav {
-  background-color: rgb(230,230, 230);
-  display: flex;
-  flex-flow: column;
-  height: fit-content;
-  max-width: 20vw;
-  min-width: 20vw;
-  padding-top: 25px;
-}
-
-.nav a {
-  color: rgb(27, 27, 27);
-  font-size: 16px;
-  font-weight: 400;
-  margin: 5px 8px;
-  opacity: 0.5;
-  text-decoration: none;
-  transition: ease 1s;
-}
-
-.nav a:hover {
-  font-weight: 400;
-  opacity: 1;
-  transition: ease 1s;
-}
-
-.flex {
-  align-items: center;
-  color: white;
-  display: flex;
-  flex-flow: row;
-  margin: auto 30px;
-  text-decoration: none;
 }
 
 /* BLOCO DE ESTILOS MAIN */
@@ -159,6 +123,42 @@
   width: 10vw;
 }
 
+/* BLOCO DE ESTILOS SIDEBAR */
+.nav {
+  background-color: rgb(230, 230, 230);
+  display: flex;
+  flex-flow: column;
+  height: fit-content;
+  max-width: 20vw;
+  min-width: 20vw;
+  padding-top: 25px;
+}
+
+.nav a {
+  color: rgb(27, 27, 27);
+  font-size: 16px;
+  font-weight: 400;
+  margin: 5px 8px;
+  opacity: 0.5;
+  text-decoration: none;
+  transition: ease 1s;
+}
+
+.nav a:hover {
+  font-weight: 400;
+  opacity: 1;
+  transition: ease 1s;
+}
+
+.flex {
+  align-items: center;
+  color: white;
+  display: flex;
+  flex-flow: row;
+  margin: auto 30px;
+  text-decoration: none;
+}
+
 /* BLOCO DE ESTILOS PRODUCTDETAIL */
 .ProductDetail {
   background-color: white;
@@ -204,7 +204,7 @@
   font-weight: 300;
 }
 
-.ProductDetail-shop-opt{
+.ProductDetail-shop-opt {
   display: flex;
   flex-flow: wrap;
 }
@@ -224,6 +224,7 @@
 
 /* ESTILOS OUTRAS TELAS */
 @media (prefers-reduced-motion: no-preference) {
+
   .App-logo {
     animation: App-logo-spin infinite 20s linear;
   }
@@ -245,6 +246,7 @@
 }
 
 @keyframes App-logo-spin {
+
   from {
     transform: rotate(0deg);
   }

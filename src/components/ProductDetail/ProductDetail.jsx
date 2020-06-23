@@ -15,6 +15,7 @@ export default class extends Component {
   constructor(props) {
     super(props);
     this.state = { couldRender: false };
+    this.renderCommentTextarea = this.renderCommentTextarea.bind(this);
   }
 
   componentDidMount() {
@@ -35,10 +36,11 @@ export default class extends Component {
           className="ProductDetail-textarea" data-testid="product-detail-evaluation"
           placeholder="Deixar comentário" id="evaluation"
         />
-        <button type="submit" onClick={(e) => {
-          e.preventDefault();
-          addEvaluation();
-        }}
+        <button
+          type="submit" onClick={(e) => {
+            e.preventDefault();
+            addEvaluation();
+          }}
         >Enviar comentário
         </button>
       </form>
@@ -58,18 +60,18 @@ export default class extends Component {
         <div className="ProductDetail-top-part">
           <div className="ProductDetail-left-part"><img alt="" src={pictures[0].url} /></div>
           <div className="ProductDetail-right-part">
-            <h2 className="ProductDetail-product-name" data-testid="product-detail-name">{title}</h2>
+            <h2 className="ProductDetail-name" data-testid="product-detail-name">{title}</h2>
             <span className="ProductDetail-price">R&#36; {price.toFixed(2)}</span>
             <div className="ProductDetail-shop-opt">
-              <AddToCart testid="product-detail-add-to-cart" data={data} id={id} addToCart={addToCart} />
+              <AddToCart
+                testid="product-detail-add-to-cart" data={data} id={id} addToCart={addToCart}
+              />
               <ShoppingCart fontSize="large" style={{ color: 'black' }} />
               {cartItems.reduce((acc, { quantity }) => acc + quantity, 0)}
-            </div>
-            {this.renderCommentTextarea()}
+            </div>{this.renderCommentTextarea()}
           </div>
         </div>
-        <Link to="/"><p>Voltar</p></Link>
-        <ul id="evaluation-sended" />
+        <Link to="/"><p>Voltar</p></Link><ul id="evaluation-sended" />
       </div >
     );
   }
