@@ -10,27 +10,17 @@ export default class extends Component {
         <p>{price}</p>
         <p data-testid="shopping-cart-product-quantity">{quantity}</p>
         <button
-          data-testid="product-increase-quantity"
-          value="+"
-          type="button"
-          onClick={(e) => {
+          data-testid="product-increase-quantity" value="+" type="button" onClick={(e) => {
             e.preventDefault();
             changeQuantity(e.target.value, item);
           }}
-        >
-          +
-        </button>
+        >+</button>
         <button
-          data-testid="product-decrease-quantity"
-          value="-"
-          type="button"
-          onClick={(e) => {
+          data-testid="product-decrease-quantity" value="-" type="button" onClick={(e) => {
             e.preventDefault();
             changeQuantity(e.target.value, item);
           }}
-        >
-          -
-        </button>
+        >-</button>
       </div>
     );
   }
