@@ -16,11 +16,11 @@ export default class extends Component {
     return (
       <div>
         <div className="cart-item">
-          {cartItems.map((item) => <InCartItem key={item.id} item={item} changeQuantity={changeQuantity} />)}
+          {cartItems.map((item) => (
+            <InCartItem key={item.id} item={item} changeQuantity={changeQuantity} />
+            ))}
         </div>
-        <div>
-          <ShoppingCart fontSize="large" style={{ color: 'black' }} />
-          Total:
+        <div><ShoppingCart fontSize="large" style={{ color: 'black' }} />Total:
           <div id="shopping-cart-total" data-testid="shopping-cart-size">
             {cartItems.reduce((acc, { quantity }) => acc + quantity, 0)}
           </div>

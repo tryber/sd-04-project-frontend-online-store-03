@@ -28,28 +28,36 @@ export default class extends Component {
     }
   }
 
-  render() {
+  renderForm() {
     const { inputValue } = this.state;
-    const { setTextToSearch, cartItems } = this.props;
+    const { setTextToSearch } = this.props;
+    return (
+      <form className="search-form" onSubmit={(e) => this.setInputValue(e)}>
+        <input
+          className="search-input" placeholder="Buscar produtos, marcas e muito mais..."
+          type="text" data-testid="query-input" value={inputValue}
+          onChange={(e) => this.setInputValue(e)}
+        />
+        <button
+          className="search-button" type="submit" data-testid="query-button" onClick={(e) => {
+            e.preventDefault();
+            setTextToSearch(inputValue);
+            this.setResults(inputValue);
+          }}
+        ><Search fontSize="small" />
+        </button>
+      </form>
+    );
+  }
+  render() {
+    const { cartItems } = this.props;
     return (
       <header className="header"><h1>FancyPants<br />Store</h1>
-        <form className="search-form" onSubmit={(e) => this.setInputValue(e)}>
-          <input
-            className="search-input" placeholder="Buscar produtos, marcas e muito mais..." type="text"
-            data-testid="query-input" value={inputValue} onChange={(e) => this.setInputValue(e)}
-          />
-          <button
-            className="search-button" type="submit" data-testid="query-button" onClick={(e) => {
-              e.preventDefault();
-              setTextToSearch(inputValue);
-              this.setResults(inputValue);
-            }}
-          ><Search fontSize="small" />
-          </button>
-        </form>
+        {this.renderForm()}
         <Link to="/cart" className="flex">
           <ShoppingCart data-testid="shopping-cart-button" fontSize="large" style={{ color: 'white' }} />
-          <div data-testid="shopping-cart-size">{cartItems.reduce((acc, { quantity }) => acc + quantity, 0)}
+          <div data-testid="shopping-cart-size">
+            {cartItems.reduce((acc, { quantity }) => acc + quantity, 0)}
           </div>
         </Link>
       </header>

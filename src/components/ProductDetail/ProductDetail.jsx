@@ -25,7 +25,7 @@ export default class extends Component {
       .then((data) => {
         this.setState({ data, couldRender: true });
       })
-      .catch(error => console.log(`Erro: ${error}`));
+      .catch((error) => console.log(`Erro: ${error}`));
   }
 
   renderCommentTextarea() {
